@@ -3,7 +3,7 @@
 Requirements
 ---
 To perform this installation, you will need:
-* Ubuntu Desktop
+* Ubuntu Desktop 14.04.4 LTS 64-bit (available at [Ubuntu.com](http://www.ubuntu.com/download/desktop))
 * USB 2GB+ Flash-Drive (e.g. [Kingston 16GB Flash Data Traveler](http://www.amazon.com/gp/product/B00DYQYITG/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B00DYQYITG&linkCode=as2&tag=robotghost-20&linkId=ZU36IO36O5OUE74Q))
 * USB WiFi Adapter (e.g. [Edimax EW-7811](https://www.amazon.com/gp/product/B003MTTJOY/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B003MTTJOY&linkCode=as2&tag=robotghost-20&linkId=CKPKJTS4YLMEVXOJ))
 
