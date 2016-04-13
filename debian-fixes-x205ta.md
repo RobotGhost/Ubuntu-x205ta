@@ -1,7 +1,8 @@
-# Installing Debian on ASUS x205ta
-#### From [Debian.org](https://wiki.debian.org/InstallingDebianOn/Asus/X205TA)
+# Installing Debian on ASUS X205TA
 ---
-### Important Notes
+#### From the IntsallingDebianOn Series via [Debian.org](https://wiki.debian.org/InstallingDebianOn/Asus/X205TA)
+Important Notes
+---
 * Before installing Debian, *Secure Boot needs to be disabled*.
 * Starting with Jessie d-i RC2, the installer includes all needed modules and core changes to install and boot on this machine. Make sure you use this version or later to install, or you'll have to fight with lots of issues and it's not likely to be fun!
 * The X205TA is a mixed mode EFI system (i.e. a 64-bit CPU combined with a 32-bit EFI) without any legacy BIOS mode. By default, the Jessie i386 installer images should boot on this machine via UEFI and let you install a complete 32-bit (i386) system. If you use the multi-arch amd64/i386 netinst or DVD image, you will also be able to install in 64-bit mode. You might expect slightly better performance that way, but the limited memory on the machine (2 GiB) will become more of an issue.
@@ -15,10 +16,10 @@ Then you simply need to reconfigure grub:
 ```
 sudo update-grub
 ```
+Configuration
 ---
-## Configuration
 #### Display
-*This is no longer necessary, starting with kernel version 4.1, as the Intel Graphics using i915 driver. X.org works flawlessly.*
+**Note:** *This is no longer necessary, starting with kernel version 4.1, as the Intel Graphics using i915 driver. X.org works flawlessly.*
 
 It might be needed to manually force the brightness level, which seems to default to a very low value (390 out of a maximum of 7812). There are several ways to do this, but a simple solution is to add this line in `/etc/sysfs.conf` (make sure you have the package sysfsutils installed):
 ```
@@ -45,11 +46,15 @@ Hibernation (usually) triggers a kernel oops+panic combo when thawing the system
 #### WiFi
 On-board SDIO device is a **Broadcom 43341** (vendor id 0x02d0, device id 0xa94d). A kernel patch for support for the device is currently under review.
 
-With kernel 4.0 (e.g. from http://kernel.ubuntu.com/~kernel-ppa/mainline/) wifi is working. However, firmware and nvram file need to be installed.
+With kernel 4.0 (e.g. from http://kernel.ubuntu.com/~kernel-ppa/mainline/) wifi is working. However, the *firmware* and *nvram file* need to be installed.
 
 Firmware can be found on Google's Android Git:
 ```
 wget https://android.googlesource.com/platform/hardware/broadcom/wlan/+archive/master/bcmdhd/firmware/bcm43341.tar.gz
+```
+As well as within this installation guide:
+```
+https://github.com/RobotGhost/ubuntu-x205ta/blob/master/files/wlan-master-bcmdhd-firmware-bcm43341.tar.gz
 ```
 Then we simply need to copy in in the right place (the directory `/lib/firmware/brcm/` might not exist so it may need to be created), with the right name:
 ```
@@ -67,14 +72,16 @@ cp /sys/firmware/efi/efivars/nvram-74b00bd9-805a-4d61-b51f-43268123d113 /lib/fir
 ```
 Note, that `brcmfmac43340-sdio.txt` then contains a wrong MAC address. However, this is not a problem and does not need to be changed, as the file is only a template.
 
-[A small commit in Linux Kernel 4.4](http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=9faac7b95ea4f9e83b7a914084cc81ef1632fd91) breaks wifi for the Asus X205TA (see Kernel Bug #106541 for details). You must revert it if you want to compile a 4.4 Kernel. Note that this regression is fixed in Linux Kernel 4.4.4 and reverting the patch is now unneeded.
+[A small commit in Linux Kernel 4.4](http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=9faac7b95ea4f9e83b7a914084cc81ef1632fd91) breaks wifi for the Asus X205TA. You must revert it if you want to compile a 4.4 Kernel. 
+
+**Note:** *This regression is fixed in Linux Kernel 4.4.4 and reverting the patch is now unneeded.*
 ```
 wget -q http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/rawdiff/drivers/mmc/host/sdhci.c?id=9faac7b95ea4f9e83b7a914084cc81ef1632fd91 -O sdhci_commit_9faac7b95ea4f9e83b7a914084cc81ef1632fd91.diff
 patch -p1 -R < sdhci_commit_9faac7b95ea4f9e83b7a914084cc81ef1632fd91.diff
 rm -f sdhci_commit_9faac7b95ea4f9e83b7a914084cc81ef1632fd91.diff
 ```
 ##### Conflict between sdhci-acpi and brcmfmac
-Due to some conflict between [sdhci-acpi and brcmfmac](https://bugzilla.kernel.org/show_bug.cgi?id=88061), a parameter has to be changed for the sdhci-acpi driver. There are several ways to do this, but a quick fix is to add this line in `/etc/sysfs.conf` (make sure you have the package `sysfsutils` installed), this way the option is passed before the `brcmfmac` driver is loaded:
+Due to some conflict between [sdhci-acpi and brcmfmac](https://bugzilla.kernel.org/show_bug.cgi?id=88061), a parameter has to be changed for the *sdhci-acpi driver*. There are several ways to do this, but a quick fix is to add this line in `/etc/sysfs.conf` (make sure you have the package `sysfsutils` installed), this way the option is passed before the `brcmfmac` driver is loaded:
 ```
 # Disable SDHCI-ACPI for Wireless, otherwise WLAN doesn't work
 bus/platform/drivers/sdhci-acpi/INT33BB:00/power/control = on
@@ -90,8 +97,9 @@ Then run:
 update-initramfs -u -k all
 ```
 After a reboot the card reader should be working.
+
+System Summary
 ---
-### System Summary
 Both the Linux kernel and GRUB have gone a long way to get support for X205TA. Originally, GRUB wasn't even able to boot. As of now, the only remaining features are sound (Realtek and Asus appear not to care about this), (all the) hotkeys, proper suspend/hibernation (apparently, the crash occurs when resuming from suspension), and Bluetooth. You can track the most recent news and experimental support [in this thread](http://ubuntuforums.org/showthread.php?t=2254322).
 ##### LSPCI
 ```
