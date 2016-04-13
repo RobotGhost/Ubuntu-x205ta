@@ -9,15 +9,14 @@ Boot from USB
 3. Under **Advanced**, set `USB Controller Select` to `EHCI`
 4. Save Changes and Exit
 
-Initial Install
----
-After the initial install of Ubuntu, the following devices are setup on the hard disk:
+#### Notes
+* After the initial install of Ubuntu, the following devices are setup on the hard disk:
 ```
 /boot = /dev/mmcblk0p1
 /     = /dev/mmcblk0p2
 ```
 
-**Note:** WiFi does not work out of the box. I had [this USB WIFI adapter](http://www.newegg.com/Product/Product.aspx?Item=N82E16833315091) laying around and it worked perfectly.
+* WiFi does not work out of the box. I had [this USB WIFI adapter](http://www.newegg.com/Product/Product.aspx?Item=N82E16833315091) laying around and it worked perfectly.
 
 Create bootia32.efi
 ---
