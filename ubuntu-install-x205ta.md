@@ -101,7 +101,7 @@ Set the new install to boot with 32bit grub
 
 The newly installed system does not have a 32bit bootloader installed.  The following must be done:
 
-## Get the bootloader on the USB drive to run the install on the system
+### Get the bootloader on the USB drive to run the install on the system
 
 Boot again with the USB stick by pressing `F2`.  Once at the grub selection screen, press `c` to edit commands.
 
@@ -112,7 +112,7 @@ initrd (hd1,gpt2)/boot/initrd-3.16-0-23-generic
 boot
 ```
 
-## After initial boot: Steps to install 32-bit grub
+### After initial boot: Steps to install 32-bit grub
 
 **Note:** *After the system boots, you can remove the USB key if you wish.*
 
