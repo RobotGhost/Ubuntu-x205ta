@@ -63,7 +63,7 @@ wget http://releases.ubuntu.com/14.10/ubuntu-14.10-desktop-amd64.iso
 ```
 Enter the commands below, assuming USB flashdrive assigned to `/dev/sdb`. 
 
-**Remember:** *This will delete everything on /dev/sdb, make sure you know what you are doing!*
+**Remember:** *This will delete everything on `/dev/sdb`, make sure you know what you are doing!*
 ```
 sgdisk --zap-all /dev/sdb
 sgdisk --new=1:0:0 --typecode=1:ef00 /dev/sdb
@@ -102,7 +102,7 @@ Plug the USB stick into the X205TA, start the system, and continue to press `F2`
 Set the new install to boot with 32bit grub
 ---
 
-The newly installed system does not have a 32bit bootloader installed.  The following must be done:
+The newly installed system does not have a 32-bit bootloader installed. If you attempt to boot, it will likely go straight to the BIOS menu. To get to Ubuntu, the following must be done:
 
 ### Get the bootloader on the USB drive to run the install on the system
 
