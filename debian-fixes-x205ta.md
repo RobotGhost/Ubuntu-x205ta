@@ -49,7 +49,7 @@ On-board SDIO device is a **Broadcom 43341** (vendor id 0x02d0, device id 0xa94d
 
 With kernel 4.0 (e.g. from http://kernel.ubuntu.com/~kernel-ppa/mainline/) wifi is working. However, the *firmware* and *nvram file* need to be installed.
 
-Firmware can be found on Google's Android Git (as well as within [this installation guide](https://raw.github.com/RobotGhost/ubuntu-x205ta/blob/master/files/wlan-master-bcmdhd-firmware-bcm43341.tar.gz).):
+Firmware can be found on Google's Android Git (as well as within [this installation guide](https://raw.github.com/RobotGhost/ubuntu-x205ta/blob/master/files/wlan-master-bcmdhd-firmware-bcm43341.tar.gz)):
 ```bash
 wget https://android.googlesource.com/platform/hardware/broadcom/wlan/+archive/master/bcmdhd/firmware/bcm43341.tar.gz
 ```
