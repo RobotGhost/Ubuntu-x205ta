@@ -11,10 +11,10 @@ Boot from USB
 
 #### Notes
 * After the initial install of Ubuntu, the following devices are setup on the hard disk:
-```
-/boot = /dev/mmcblk0p1
-/     = /dev/mmcblk0p2
-```
+   ```
+   /boot = /dev/mmcblk0p1
+   /     = /dev/mmcblk0p2
+   ```
 
 * WiFi does not work out of the box. I had [this USB WIFI adapter](http://www.newegg.com/Product/Product.aspx?Item=N82E16833315091) laying around and it worked perfectly.
 
