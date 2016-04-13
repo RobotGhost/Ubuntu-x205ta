@@ -1,12 +1,13 @@
-Instructions to Install Ubuntu on ASUS X205TA
+# Installing Ubuntu on ASUS X205TA
+#### From [Instructions to Install Ubuntu](https://github.com/lolopaka/instructions/blob/master/ubuntu-14.10-install-asus-x205ta.md)  by [lopaka](https://github.com/lopaka)
+Boot from USB
 ---
 
-###Boot from USB
 #### BIOS
 1. Press F2 (or ESC) before boot to get into BIOS.
 2. Under **Security**, set `Secure Boot Control` to `Disabled`
 3. Under **Advanced**, set `USB Controller Select` to `EHCI`
-4. **'Save Changes and Exit'**
+4. Save Changes and Exit
 
 Initial Install
 ---
