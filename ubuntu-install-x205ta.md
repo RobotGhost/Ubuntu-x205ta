@@ -53,7 +53,7 @@ Prepare the USB flashdrive
 ---
 This will be used as the install media.
 
-**Note:** *THIS WILL DELETE DATA ON /dev/sdb - MAKE SURE YOU KNOW WHAT YOU ARE DOING!*
+**Note:** ***THIS WILL DELETE ALL DATA ON THE USB DRIVE (/dev/sdb) - MAKE SURE YOU KNOW WHAT YOU ARE DOING!***
 
 On a freshly installed Ubuntu system:
 ```bash
@@ -63,7 +63,7 @@ wget http://releases.ubuntu.com/14.10/ubuntu-14.10-desktop-amd64.iso
 ```
 Enter the commands below, assuming USB flashdrive assigned to `/dev/sdb`. 
 
-**Remember:** *THIS WILL DELETE ALL DATA ON /dev/sdb - make sure you know what you are doing!*
+**Remember:** *This will delete everything on /dev/sdb, make sure you know what you are doing!*
 ```
 sgdisk --zap-all /dev/sdb
 sgdisk --new=1:0:0 --typecode=1:ef00 /dev/sdb
