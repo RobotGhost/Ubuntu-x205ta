@@ -55,7 +55,7 @@ wget https://android.googlesource.com/platform/hardware/broadcom/wlan/+archive/m
 ```
 As well as within this installation guide:
 ```bash
-https://github.com/RobotGhost/ubuntu-x205ta/blob/master/files/wlan-master-bcmdhd-firmware-bcm43341.tar.gz
+wget https://raw.githubusercontent.com/RobotGhost/ubuntu-x205ta/blob/master/files/wlan-master-bcmdhd-firmware-bcm43341.tar.gz
 ```
 Then we simply need to copy in in the right place (the directory `/lib/firmware/brcm/` might not exist so it may need to be created), with the right name:
 ```bash
