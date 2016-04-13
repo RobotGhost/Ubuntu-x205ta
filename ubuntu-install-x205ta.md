@@ -40,7 +40,7 @@ cd grub
 
 make
 ```
-Create boot32.efi to allow booting:
+Create the boot32.efi and save it for later:
 ```
 cd grub-core
 
