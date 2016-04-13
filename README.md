@@ -10,6 +10,7 @@ To perform this installation, you will need:
 Instructions
 ---
 The installation guides should be performed in this order:
+
 1. Iopaka's Guide to Installing Ubuntu 14.10 on X205TA
   * Requires [bootia32.efi](https://github.com/RobotGhost/ubuntu-x205ta/blob/master/files/bootia32.efi)
 2. Debian's InstallDebianOn Guide to configuring drivers and settings on X205TA
