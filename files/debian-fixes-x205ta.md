@@ -1,41 +1,4 @@
-#language en
-#pragma description How to install Debian/Linux on an ASUS X205TA
-##
-## Read http://wiki.debian.org/InstallingDebianOn/HowToContribute before modifying this page
-##
-## You will find some comments like this one below to help you write a report.
-## ------------------------------------------------------------------------------------------
-##
-## Location Bar + DebianOn compatibility rating
-~-Translation(s): none-~
-
-||<tablestyle="width:100%" style="width:96px;border-right-style:none"><<Include(InstallingDebianOn/Ratings/CategoryEtchUnrated)>>||<style="border-left-style:none"><<Include(InstallingDebianOn/PageFragments/Philosophy)>>||
-
-## In this block, we describe the similar, compatible models that are also covered by this guide.
-~-''Models covered''-~<<BR>>'''ASUS X205TA'''
-
-= Overall Status =
-## If you installed Debian from scratch on this computer, please rate it!
-## see InstallingDebianOn/Ratings (change the "included" file above).
-||||<tablestyle="margin-left:3em;width:90%">'''Core Components'''||<|10 style="text-align:right;border-style:none;vertical-align:top;"> {{attachment:photo.png}}||
-||Boot Standard Kernel:		|| {OK} ||
-|| Detect hard drives:		|| {OK} ||
-## If Xorg doesn't work at all (not even with vesa driver), then move Xorg line here.
-||||'''Extra Features'''||
-|| CPU Frequency Scaling	|| {OK} ||
-|| Hibernation			|| /!\ (thawing will trigger a kernel panic) ||
-|| Audio         		|| {X} ||
-|| Sleep / Suspend		|| {OK} (after resume, the touchpad driver has to be reloaded) ||
-|| Xorg         		|| {OK} ||
-||  - OpenGL			|| {OK} ||
-||  - Resize-and-Rotate(randr)	|| [?] ||
-|| Switch to External Screen	|| {OK} ||
-|| Mouse			||     ||
-||  - Built-in (Touchpad)	|| {OK} ||
-|| Wireless/Wifi        	|| {i} X-( (use kernel >= 4.0) ||
-|| Keyboard's Hotkeys		|| /!\ (audio hotkeys work for now... although we don't have audio yet) ||
-|| MicroSD card reader		|| {i} ||
-~-Legend :<<BR>> {OK} = OK ; {X} Unsupported(No Driver) ; /!\ = Error (Couldn't get it working); [?] Unknown, Not Test ; [-] Not-applicable <<BR>> {i} = Configuration Required;  X-( = Only works with a non-free driver and or firmware-~
+## How to install Debian/Linux on an ASUS X205TA
 
 = Important Note =
 ### Any Important note, before the user starts installing Debian
