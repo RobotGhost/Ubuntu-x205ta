@@ -3,11 +3,9 @@
 = Important Note =
 ### Any Important note, before the user starts installing Debian
 ### Like Bios, Disk, MBR Configuration. (default : ''none'')
-{i} Before installing Debian, Secure Boot needs to be disabled.
-
-{i} Starting with Jessie d-i RC2, the installer includes all needed modules and core changes to install and boot on this machine. Make sure you use this version or later to install, or you'll have to fight with lots of issues and it's not likely to be fun!
-
-{i} The X205TA is a mixed mode EFI system (i.e. a 64-bit CPU combined with a 32-bit EFI) without any legacy BIOS mode. By default, the Jessie i386 installer images should boot on this machine via UEFI and let you install a complete 32-bit (i386) system. If you use the multi-arch amd64/i386 netinst or DVD image, you will also be able to install in 64-bit mode. You might expect slightly better performance that way, but the limited memory on the machine (2 GiB) will become more of an issue.
+<li> Before installing Debian, Secure Boot needs to be disabled.
+<li> Starting with Jessie d-i RC2, the installer includes all needed modules and core changes to install and boot on this machine. Make sure you use this version or later to install, or you'll have to fight with lots of issues and it's not likely to be fun!
+<li>The X205TA is a mixed mode EFI system (i.e. a 64-bit CPU combined with a 32-bit EFI) without any legacy BIOS mode. By default, the Jessie i386 installer images should boot on this machine via UEFI and let you install a complete 32-bit (i386) system. If you use the multi-arch amd64/i386 netinst or DVD image, you will also be able to install in 64-bit mode. You might expect slightly better performance that way, but the limited memory on the machine (2 GiB) will become more of an issue.
 
 {i} During installation, the mmcblk0rpmb device creates a lot of timeouts and makes the process  painfully slow ([[https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=759656|Bug #759656]], [[https://bugs.launchpad.net/ubuntu/+source/udev/+bug/1333140|workaround]]). Simply removing /dev/mmcblk0rpmb solves the problem, and during regular use these timeouts do not seem to be noticable.
 
