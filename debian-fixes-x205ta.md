@@ -1,12 +1,13 @@
 # Installing Debian on ASUS X205TA
-#### From the [IntsallingDebianOn](https://wiki.debian.org/InstallingDebianOn/Asus/X205TA) Series via [Debian.org](https://debian.org/)
+#### From the [InstallingDebianOn](https://wiki.debian.org/InstallingDebianOn/Asus/X205TA) Series via [Debian.org](https://debian.org/)
 Important Notes
 ---
 * Before installing Debian, *Secure Boot needs to be disabled*.
 * Starting with Jessie d-i RC2, the installer includes all needed modules and core changes to install and boot on this machine. Make sure you use this version or later to install, or you'll have to fight with lots of issues and it's not likely to be fun!
 * The X205TA is a mixed mode EFI system (i.e. a 64-bit CPU combined with a 32-bit EFI) without any legacy BIOS mode. By default, the Jessie i386 installer images should boot on this machine via UEFI and let you install a complete 32-bit (i386) system. If you use the multi-arch amd64/i386 netinst or DVD image, you will also be able to install in 64-bit mode. You might expect slightly better performance that way, but the limited memory on the machine (2 GiB) will become more of an issue.
-* During installation, the `mmcblk0rpmb` device creates a lot of timeouts and makes the process painfully slow (Bug #759656, workaround). Simply removing `/dev/mmcblk0rpmb` solves the problem, and during regular use these timeouts do not seem to be noticable.
-#### System Freeze Issue
+* During installation, the `mmcblk0rpmb` device creates a lot of timeouts and makes the process painfully slow. Simply removing `/dev/mmcblk0rpmb` solves the problem, and during regular use these timeouts do not seem to be noticable.
+
+### System Freeze Issue
 To correct this, we can add `intel_idle.max_cstate=1` to the kernel boot parameters. The easiest way is to edit the file /etc/default/grub and configure this line:
 ```
 GRUB_CMDLINE_LINUX_DEFAULT="quiet intel_idle.max_cstate=1"
@@ -17,17 +18,17 @@ sudo update-grub
 ```
 Configuration
 ---
-#### Display
+### Display
 It might be needed to manually force the brightness level, which seems to default to a very low value (390 out of a maximum of 7812). There are several ways to do this, but a simple solution is to add this line in `/etc/sysfs.conf` (make sure you have the package sysfsutils installed):
 ```
 # Set brightness level, maximum is 7812, needed for Linux Kernel < 4.1
 class/backlight/intel_backlight/brightness = 5000  
 ```
 
-#### Audio
+### Audio
 The built-in card is a **Realtek RT5648** (unverified). At this moment there isn't any driver for this card (as of Linux Kernel 4.1.3). It may be possible that some models of the X205TA have a different card, a **Realtek RT5640** (unverified).
 
-#### Power Management
+### Power Management
 Battery status information is available since kernel >= 3.19. The X205TA uses some ACPI 5.0 features that are not supported in kernels < 3.19. 
 
 If you add `relative_sleep_states=1` to the kernel command line, suspension (a.k.a: Suspend to RAM) will work. After resume, two things won't. First of all, the touchpad won't respond. To fix that, run these commands:
@@ -43,7 +44,7 @@ Bluetooth does not works for now, so it's okay to blacklist `btsdio`.
 
 Hibernation (usually) triggers a kernel oops+panic combo when thawing the system. After that, if you reboot the machine the hard way, the kernel boots into a clean session.
 
-#### WiFi
+### WiFi
 On-board SDIO device is a **Broadcom 43341** (vendor id 0x02d0, device id 0xa94d). A kernel patch for support for the device is currently under review.
 
 With kernel 4.0 (e.g. from http://kernel.ubuntu.com/~kernel-ppa/mainline/) wifi is working. However, the *firmware* and *nvram file* need to be installed.
@@ -80,14 +81,14 @@ wget -q http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/rawdiff/d
 patch -p1 -R < sdhci_commit_9faac7b95ea4f9e83b7a914084cc81ef1632fd91.diff
 rm -f sdhci_commit_9faac7b95ea4f9e83b7a914084cc81ef1632fd91.diff
 ```
-##### Conflict between sdhci-acpi and brcmfmac
+#### Conflict between sdhci-acpi and brcmfmac
 Due to some conflict between [sdhci-acpi and brcmfmac](https://bugzilla.kernel.org/show_bug.cgi?id=88061), a parameter has to be changed for the *sdhci-acpi driver*. There are several ways to do this, but a quick fix is to add this line in `/etc/sysfs.conf` (make sure you have the package `sysfsutils` installed), this way the option is passed before the `brcmfmac` driver is loaded:
 ```
 # Disable SDHCI-ACPI for Wireless, otherwise WLAN doesn't work
 bus/platform/drivers/sdhci-acpi/INT33BB:00/power/control = on
 ```
 
-#### microSD Card Reader
+### microSD Card Reader
 Create the file `/etc/modprobe.d/sdhci.conf` with the following content:
 ```
 # Adjustment to make micro SD card reader work
@@ -103,7 +104,7 @@ System Summary
 ---
 Both the Linux kernel and GRUB have gone a long way to get support for X205TA. Originally, GRUB wasn't even able to boot. As of now, the only remaining features are sound (Realtek and Asus appear not to care about this), (all the) hotkeys, proper suspend/hibernation (apparently, the crash occurs when resuming from suspension), and Bluetooth. You can track the most recent news and experimental support [in this thread](http://ubuntuforums.org/showthread.php?t=2254322).
 
-##### LSPCI
+#### LSPCI
 ```
 00:00.0 Host bridge [0600]: Intel Corporation Atom Processor Z36xxx/Z37xxx Series SoC Transaction Register [8086:0f00] (rev 0f)
 00:02.0 VGA compatible controller [0300]: Intel Corporation Atom Processor Z36xxx/Z37xxx Series Graphics & Display [8086:0f31] (rev 0f)
@@ -112,7 +113,7 @@ Both the Linux kernel and GRUB have gone a long way to get support for X205TA. O
 00:1f.0 ISA bridge [0601]: Intel Corporation Atom Processor Z36xxx/Z37xxx Series Power Control Unit [8086:0f1c] (rev 0f)
 ```
 
-##### LSUSB
+#### LSUSB
 ```
 Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
 Bus 001 Device 003: ID 05e3:0610 Genesys Logic, Inc. 4-port hub
