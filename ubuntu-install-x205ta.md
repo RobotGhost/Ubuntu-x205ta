@@ -1,5 +1,12 @@
 # Installing Ubuntu on ASUS X205TA
 #### From [Instructions to Install Ubuntu](https://github.com/lolopaka/instructions/blob/master/ubuntu-14.10-install-asus-x205ta.md)  by [lopaka](https://github.com/lopaka)
+Notes
+---
+This guide begins with creating a USB boot disk from a working Ubuntu installation. Alternatively, you can create boot disk using a tool like Rufus, so long as you are able to add the *bootia32.efi* file to `EFI/BOOT/` on the USB. This means that you should not use DD to create the disk, since that will not leave enough room or allow for editing.
+
+If you have the USB boot disk set up in this way, you can skip to "*Setting up the new install to boot with 32bit grub*."
+
+
 Boot from USB
 ---
 
@@ -99,7 +106,7 @@ Plug the USB stick into the X205TA, start the system, and continue to press `F2`
 
 **Install Ubuntu as usual.**
 
-Set the new install to boot with 32bit grub
+Setting up the new install to boot with 32bit grub
 ---
 
 The newly installed system does not have a 32-bit bootloader installed. If you attempt to boot, it will likely go straight to the BIOS menu. To get to Ubuntu, the following must be done:
