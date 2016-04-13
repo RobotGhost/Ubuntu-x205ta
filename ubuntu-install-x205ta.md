@@ -53,7 +53,7 @@ Prepare the USB flashdrive
 ---
 This will be used as the install media.
 
-**Note:** ***THIS WILL DELETE ALL DATA ON THE USB DRIVE (/dev/sdb) - MAKE SURE YOU KNOW WHAT YOU ARE DOING!***
+***THIS WILL DELETE ALL DATA ON THE USB DRIVE (`/dev/sdb`) - MAKE SURE YOU KNOW WHAT YOU ARE DOING!***
 
 On a freshly installed Ubuntu system:
 ```bash
