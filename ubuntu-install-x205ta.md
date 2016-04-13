@@ -1,9 +1,8 @@
 Instructions to Install Ubuntu on ASUS X205TA
 ---
 
-Boot from USB
----
-### BIOS
+###Boot from USB
+#### BIOS
 1. Press F2 (or ESC) before boot to get into BIOS.
 2. Under **Security**, set `Secure Boot Control` to `Disabled`
 3. Under **Advanced**, set `USB Controller Select` to `EHCI`
@@ -94,7 +93,7 @@ umount /mnt
 ```
 Plug the USB stick into the X205TA, start the system, and continue to press `F2` to get the BIOS.  From there, go to `Save & Exit` tab, and under `Boot Override` select the USB flash drive.
 
-Install Ubuntu as usual.
+**Install Ubuntu as usual.**
 
 Set the new install to boot with 32bit grub
 ---
@@ -136,4 +135,7 @@ cd grub-core
 cd /boot/efi/EFI
 cp grub/grubia32.efi ubuntu/
 ```
+Next Steps
+---
+
 Ubuntu should now be working and able to boot directly from the 32-bit grub. Proceed to update the firmware and configurations noted in the [InstallDebianOn Guide](https://github.com/RobotGhost/ubuntu-x205ta/blob/master/debian-fixes-x205ta.md). (It is highly recommended to start with the WiFi.)
