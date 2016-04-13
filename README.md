@@ -1,4 +1,5 @@
-# Instructions to Install Ubuntu on the ASUS X205TA Laptop
+# Instructions to Install Ubuntu on the 
+ASUS X205TA Laptop
 
 Requirements
 ---
